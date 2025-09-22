@@ -1,5 +1,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
+import logoUrl from './assets/LogoBranca.png';
+import escritorioUrl from './assets/escritorio.jpg';
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone,
@@ -99,7 +101,8 @@ const EQUIPE = [
   { nome: "Dra. Giovanna", oab: null, cargo: "Imobiliário • Civil", formacao: [], areas: ["Imobiliário", "Civil"] },
   { nome: "Gabriel (Estagiário)", oab: null, cargo: "Pesquisa • Apoio jurídico", formacao: [], areas: ["Pesquisa", "Apoio"] },
 ];
-const BASE = import.meta.env.BASE_URL || "/";
+
+
 const LINKS = {
   site: "https://marinhomendes.adv.br/",
   blog: "https://www.marinhomendes.adv.br/blog/",
@@ -112,8 +115,8 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/company/14030512/",
   mapsCampinas: "https://maps.google.com/?q=Av.+Jos%C3%A9+Rocha+Bonfim%2C+214%2C+Campinas+SP",
   mapsHortolandia: "https://maps.google.com/?q=Rua+Ant%C3%B4nio+Nelson+Barbosa%2C+93%2C+Hortol%C3%A2ndia+SP",
-  logo: `${BASE}LogoBranca.png`,
-  fotoSobre: `${BASE}escritorio.jpg`,
+ logo: logoUrl,
+  fotoSobre: escritorioUrl,
 };
 
 function Section({ id, title, subtitle, children }) {
