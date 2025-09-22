@@ -112,8 +112,8 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/company/14030512/",
   mapsCampinas: "https://maps.google.com/?q=Av.+Jos%C3%A9+Rocha+Bonfim%2C+214%2C+Campinas+SP",
   mapsHortolandia: "https://maps.google.com/?q=Rua+Ant%C3%B4nio+Nelson+Barbosa%2C+93%2C+Hortol%C3%A2ndia+SP",
-  logo: "public/LogoBranca.png",     
-  fotoSobre: "public/escritorio.jpg",
+  logo: "/LogoBranca.png",     
+  fotoSobre: "/escritorio.jpg",
 };
 
 function Section({ id, title, subtitle, children }) {
