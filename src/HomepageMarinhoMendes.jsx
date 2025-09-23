@@ -102,12 +102,19 @@ const EQUIPE = [
     areas: ["Previdenciário", "Civil", "Consumidor", "Família e Sucessões"],
     foto: evianeFoto,
   },
-  { nome: "Dr. Willians", oab: null, cargo: "Trabalhista • Empresarial", formacao: [], areas: ["Trabalhista", "Empresarial"], foto: williansFoto },
+  {
+    nome: "Dr. Williams da Silva",
+    oab: "OAB/SP 513.604",
+    cargo: "Civil • Direito do Trabalho • Contratos",
+    formacao: ["Graduado em Direito - Universidade Adventista de São Paulo"],
+    areas: ["Civil", "Trabalho", "Contratos"],
+    foto: williansFoto
+  },
   {
   nome: "Dra. Giovana Marques",
     oab: "OAB/SP 531.586",
     cargo: "Civil • Família • Previdenciário",
-    formacao: ["Graduada em Direito na Universidade Adventista de São Paulo"],
+    formacao: ["Graduada em Direito - Universidade Adventista de São Paulo"],
     areas: ["Civil", "Família", "Previdenciário"],
     foto: giovannaFoto
   },
