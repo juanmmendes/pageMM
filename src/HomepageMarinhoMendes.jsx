@@ -103,8 +103,22 @@ const EQUIPE = [
     foto: evianeFoto,
   },
   { nome: "Dr. Willians", oab: null, cargo: "Trabalhista • Empresarial", formacao: [], areas: ["Trabalhista", "Empresarial"], foto: williansFoto },
-  { nome: "Dra. Giovanna", oab: null, cargo: "Imobiliário • Civil", formacao: [], areas: ["Imobiliário", "Civil"], foto: giovannaFoto },
-  { nome: "Gabriel (Estagiário)", oab: null, cargo: "Pesquisa • Apoio jurídico", formacao: [], areas: ["Pesquisa", "Apoio"], foto: gabrielFoto },
+  {
+  nome: "Dra. Giovana Marques",
+    oab: "OAB/SP 531.586",
+    cargo: "Civil • Família • Previdenciário",
+    formacao: ["Graduada em Direito na Universidade Adventista de São Paulo"],
+    areas: ["Civil", "Família", "Previdenciário"],
+    foto: giovannaFoto
+  },
+  {
+    nome: "Gabriel (Estagiário)",
+    oab: null,
+    cargo: "Gestão Processual • Pesquisa Jurídica",
+    formacao: ["Cursando Direito no Centro Universitário Adventista de São Paulo"],
+    areas: ["Gestão Processual", "Suporte Técnico-Jurídico", "Pesquisa Jurídica", "Acompanhamento Processual"],
+    foto: gabrielFoto
+  },
 ];
 
 const LINKS = {
