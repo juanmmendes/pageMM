@@ -5,7 +5,7 @@ import sergioFoto from './assets/Rodrigo.png';
 import evianeFoto from './assets/Eviane.jpeg';
 import giovannaFoto from './assets/Giovana.jpeg';
 import gabrielFoto from './assets/Gabriel.jpeg';
-import williansFoto from './assets/LogoBranca.png';
+import williansFoto from './assets/Williams.jpg';
 import escritorioUrl from './assets/escritorio.jpg';
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -598,8 +598,8 @@ function PersonCard({ nome, cargo, oab, formacao = [], areas = [], foto }) {
             <img
               src={foto}
               alt={nome}
-              className="h-16 w-16 rounded-full object-cover border-2 border-amber-300/60 bg-white"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              className="h-16 w-16 rounded-full border-2 border-amber-300/60 bg-white"
+              style={{ objectFit: 'cover', objectPosition: 'center', width: '4rem', height: '4rem', aspectRatio: '1/1', display: 'block' }}
             />
           ) : (
             <div className="grid h-16 w-16 place-content-center rounded-full bg-white text-neutral-900 font-bold">
