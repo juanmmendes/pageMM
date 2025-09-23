@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from "react";
 import logoUrl from './assets/LogoBranca.png';
 import escritorioUrl from './assets/escritorio.jpg';
@@ -31,9 +30,8 @@ import {
 } from "lucide-react";
 
 // ==========================
-// HOMEPAGE – MARINHO MENDES (v5)
-// Atualizações: "Saiba mais" nas áreas com links oficiais fornecidos.
-// Responsividade mantida.
+// HOMEPAGE – MARINHO MENDES (v6)
+// Foco: correções de responsividade (hero, painel de contatos e cards da equipe)
 // ==========================
 
 const THEME = {
@@ -92,16 +90,13 @@ const EQUIPE = [
     nome: "Dra. Eviane de Oliveira Silva",
     oab: "OAB/SP 414.369",
     cargo: "Previdenciário • Civil • Consumidor",
-    formacao: [
-      "Graduada em Direito – Universidade Presbiteriana Mackenzie",
-    ],
+    formacao: ["Graduada em Direito – Universidade Presbiteriana Mackenzie"],
     areas: ["Previdenciário", "Civil", "Consumidor", "Família e Sucessões"],
   },
   { nome: "Dr. Willians", oab: null, cargo: "Trabalhista • Empresarial", formacao: [], areas: ["Trabalhista", "Empresarial"] },
   { nome: "Dra. Giovanna", oab: null, cargo: "Imobiliário • Civil", formacao: [], areas: ["Imobiliário", "Civil"] },
   { nome: "Gabriel (Estagiário)", oab: null, cargo: "Pesquisa • Apoio jurídico", formacao: [], areas: ["Pesquisa", "Apoio"] },
 ];
-
 
 const LINKS = {
   site: "https://marinhomendes.adv.br/",
@@ -115,16 +110,16 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/company/14030512/",
   mapsCampinas: "https://maps.google.com/?q=Av.+Jos%C3%A9+Rocha+Bonfim%2C+214%2C+Campinas+SP",
   mapsHortolandia: "https://maps.google.com/?q=Rua+Ant%C3%B4nio+Nelson+Barbosa%2C+93%2C+Hortol%C3%A2ndia+SP",
- logo: logoUrl,
+  logo: logoUrl,
   fotoSobre: escritorioUrl,
 };
 
 function Section({ id, title, subtitle, children }) {
   return (
-    <section id={id} className="relative py-20">
+    <section id={id} className="relative py-16 sm:py-20">
       <div className="mx-auto w-full max-w-7xl px-4">
-        <div className="mb-10">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+        <div className="mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
             {title}
           </h2>
           {subtitle && (
@@ -139,7 +134,7 @@ function Section({ id, title, subtitle, children }) {
 
 function CardGradient({ children, className = "" }) {
   return (
-    <div className={`relative ${THEME.radius} p-[1px] bg-gradient-to-br from-white/15 via-white/5 to-transparent`}> 
+    <div className={`relative ${THEME.radius} p-[1px] bg-gradient-to-br from-white/15 via-white/5 to-transparent`}>
       <div className={`h-full w-full ${THEME.radius} border border-white/10 bg-white/5 backdrop-blur-xl ${className}`}>
         {children}
       </div>
@@ -236,14 +231,20 @@ export default function HomepageMarinhoMendes() {
 
       {/* HERO */}
       <main id="top" className="relative">
-        <section className="relative pt-14 sm:pt-20">
+        <section className="relative pt-12 sm:pt-16">
           <div className="mx-auto w-full max-w-7xl px-4">
-            <div className="grid items-center gap-12 md:grid-cols-2">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                <h1 className="mt-2 text-4xl sm:text-6xl font-semibold tracking-tight leading-tight">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-center gap-8 sm:gap-12">
+              {/* Texto */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="min-w-0"
+              >
+                <h1 className="mt-2 text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
                   Excelência jurídica com <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-300">confiança</span> e inovação
                 </h1>
-                <p className="mt-4 max-w-xl text-white/70">
+                <p className="mt-4 max-w-2xl text-white/70">
                   Atuamos em todo o território nacional com soluções completas para pessoas físicas e jurídicas, viabilizando negócios e resolvendo conflitos com agilidade e segurança.
                 </p>
                 <blockquote className="mt-4 border-l-2 border-white/20 pl-4 text-sm italic text-white/70">
@@ -264,16 +265,21 @@ export default function HomepageMarinhoMendes() {
                 </div>
               </motion.div>
 
-              {/* Painel de destaque com contatos */}
-              <motion.div className="relative" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}>
-                <CardGradient className="p-6">
-                  <div className="grid gap-4 sm:grid-cols-2">
+              {/* Painel de destaque com contatos – agora 100% fluido e sem quebra */}
+              <motion.div
+                className="relative w-full max-w-xl lg:max-w-none mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                <CardGradient className="p-5 sm:p-6">
+                  <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
                     <ContactItem Icon={Phone} label="Campinas" value="(19) 3209-0417" href={LINKS.phoneCampinas} />
                     <ContactItem Icon={Phone} label="Hortolândia" value="(19) 3845-4946" href={LINKS.phoneHortolandia} />
                     <ContactItem Icon={Mail} label="E-mail" value="adm@marinhomendes.adv.br" href={LINKS.email} />
                     <ContactItem Icon={Globe} label="Site" value="marinhomendes.adv.br" href={LINKS.site} />
                   </div>
-                  <div className="mt-6 flex items-center gap-3">
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
                     <a aria-label="Facebook" href={LINKS.facebook} target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100"><Facebook className="h-5 w-5"/></a>
                     <a aria-label="Instagram" href={LINKS.instagram} target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100"><Instagram className="h-5 w-5"/></a>
                     <a aria-label="LinkedIn" href={LINKS.linkedin} target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100"><Linkedin className="h-5 w-5"/></a>
@@ -285,11 +291,11 @@ export default function HomepageMarinhoMendes() {
           </div>
         </section>
 
-        {/* SOBRE NÓS com foto real */}
+        {/* SOBRE NÓS */}
         <Section id="sobre" title="Sobre nós" subtitle="Independência, atuação diversificada e compromisso com resultados.">
           <div className="grid gap-8 lg:grid-cols-2">
-            <CardGradient className="p-8">
-              <p className="text-white/80 text-lg leading-relaxed">
+            <CardGradient className="p-6 sm:p-8">
+              <p className="text-white/80 text-base sm:text-lg leading-relaxed">
                 A <strong>Marinho Mendes Sociedade de Advogados</strong> é um escritório independente e de atuação diversificada, com vocação para prestar serviços jurídicos com <strong>qualidade</strong>, <strong>ética</strong> e <strong>excelência técnica</strong>.
                 Representamos clientes em todo o território nacional, com atendimento <strong>eficaz e personalizado</strong>, suporte integral para <strong>viabilizar negócios</strong> e <strong>solucionar conflitos</strong> com rapidez e segurança.
                 A disponibilidade dos advogados e os relacionamentos de confiança mútua são a base da nossa atuação.
@@ -303,7 +309,7 @@ export default function HomepageMarinhoMendes() {
           </div>
         </Section>
 
-        {/* ÁREAS DE ATUAÇÃO com abas e cards + "Saiba mais" */}
+        {/* ÁREAS */}
         <Section id="areas" title="Áreas de atuação" subtitle="Atendimento a pessoas jurídicas e físicas.">
           <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/5 p-1">
             <button onClick={() => setTab("cnpj")} className={`px-4 py-2 text-sm rounded-full transition ${tab === "cnpj" ? "bg-white text-neutral-900" : "text-white/80 hover:text-white"}`}>
@@ -331,12 +337,12 @@ export default function HomepageMarinhoMendes() {
           </AnimatePresence>
         </Section>
 
-        {/* EQUIPE – CARROSSEL PREMIUM */}
+        {/* EQUIPE – carrossel otimizado para mobile */}
         <Section id="equipe" title="Nossa equipe" subtitle="Carrossel com perfis completos e destaque visual.">
           <TeamCarousel people={EQUIPE} />
         </Section>
 
-        {/* LOCAIS DE ATENDIMENTO */}
+        {/* LOCAIS */}
         <Section id="contato" title="Locais de atendimento" subtitle="Atendimento mediante agendamento. Seg–Sex 08:30–18:00.">
           <div className="grid gap-6 md:grid-cols-2">
             <AddressCard
@@ -409,6 +415,11 @@ export default function HomepageMarinhoMendes() {
           </div>
         </div>
       </footer>
+
+      {/* Ajustes globais para esconder scrollbar do carrossel no WebKit */}
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar{ display:none; }
+      `}</style>
     </div>
   );
 }
@@ -418,11 +429,11 @@ export default function HomepageMarinhoMendes() {
 // ==========================
 function ContactItem({ Icon, label, value, href }) {
   return (
-    <a href={href} className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 hover:translate-y-[-2px] transition">
+    <a href={href} className="group w-full flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 hover:translate-y-[-2px] transition">
       <IconCircle Icon={Icon} />
-      <div>
+      <div className="min-w-0">
         <div className="text-xs text-white/60">{label}</div>
-        <div className="text-sm font-medium group-hover:underline">{value}</div>
+        <div className="text-sm font-medium break-words whitespace-normal group-hover:underline">{value}</div>
       </div>
     </a>
   );
@@ -430,15 +441,15 @@ function ContactItem({ Icon, label, value, href }) {
 
 function AreaCard({ title, desc, icon: Icon, href }) {
   return (
-    <div className="group relative">
+    <div className="group relative h-full">
       <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
-      <CardGradient className="p-5">
+      <CardGradient className="p-5 h-full">
         <div className="flex items-start gap-4">
           <IconCircle Icon={Icon} />
-          <div>
+          <div className="min-w-0">
             <div className="font-semibold tracking-tight">{title}</div>
             <p className="mt-1 text-sm text-white/70">{desc}</p>
-            <div className="mt-3 inline-flex items-center gap-2 text-xs text-white/60">
+            <div className="mt-3 inline-flex flex-wrap items-center gap-2 text-xs text-white/60">
               <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Consultivo</span>
               <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Contencioso</span>
             </div>
@@ -520,9 +531,13 @@ function TeamCarousel({ people }) {
         </button>
       </div>
 
-      <div ref={trackRef} className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth gap-5 pb-2 pr-1" style={{ scrollbarWidth: "none" }}>
+      <div
+        ref={trackRef}
+        className="hide-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth gap-5 pb-2 pr-1"
+        style={{ scrollbarWidth: "none" }}
+      >
         {people.map((p, i) => (
-          <div key={i} className="snap-start shrink-0 basis-[85%] sm:basis-[46%] lg:basis-[31%]">
+          <div key={i} className="snap-center shrink-0 basis-[88%] sm:basis-[46%] lg:basis-[31%]">
             <PersonCard {...p} />
           </div>
         ))}
@@ -546,7 +561,7 @@ function PersonCard({ nome, cargo, oab, formacao = [], areas = [] }) {
     .join("");
 
   return (
-    <CardGradient className="p-6">
+    <CardGradient className="p-6 h-full">
       <div className="flex items-start gap-4">
         <div className="relative">
           <div className="grid h-16 w-16 shrink-0 place-content-center rounded-full bg-white text-neutral-900 font-bold">
@@ -561,7 +576,7 @@ function PersonCard({ nome, cargo, oab, formacao = [], areas = [] }) {
           {formacao.length > 0 && (
             <ul className="mt-2 list-disc pl-4 text-xs text-white/70 space-y-1">
               {formacao.map((f, i) => (
-                <li key={i}>{f}</li>
+                <li key={i} className="break-words">{f}</li>
               ))}
             </ul>
           )}
@@ -590,7 +605,7 @@ function AddressCard({ cidade, endereco, fone, telHref, mapsHref }) {
       </div>
       <ul className="space-y-1 text-sm text-white/80">
         {endereco.map((l, i) => (
-          <li key={i}>{l}</li>
+          <li key={i} className="break-words">{l}</li>
         ))}
       </ul>
       <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
