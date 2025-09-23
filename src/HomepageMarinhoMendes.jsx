@@ -1,5 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import logoUrl from './assets/LogoBranca.png';
+import danielFoto from './assets/Daniel.jpeg';
+import sergioFoto from './assets/Rodrigo.png';
+import evianeFoto from './assets/Eviane.jpeg';
+import giovannaFoto from './assets/Giovana.jpeg';
+import gabrielFoto from './assets/Gabriel.jpeg';
+import williansFoto from './assets/LogoBranca.png';
 import escritorioUrl from './assets/escritorio.jpg';
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -74,6 +80,7 @@ const EQUIPE = [
       "Pós-graduação em Direito do Trabalho e Previdenciário – ESAMC",
     ],
     areas: ["Societário", "Empresarial", "Trabalhista", "Administrativo"],
+    foto: danielFoto,
   },
   {
     nome: "Dr. Sergio Rodrigo Costa",
@@ -85,6 +92,7 @@ const EQUIPE = [
       "Pós-graduando em Direito Tributário – IBET",
     ],
     areas: ["Tributário", "Empresarial", "Civil", "Trabalhista"],
+    foto: sergioFoto,
   },
   {
     nome: "Dra. Eviane de Oliveira Silva",
@@ -92,10 +100,11 @@ const EQUIPE = [
     cargo: "Previdenciário • Civil • Consumidor",
     formacao: ["Graduada em Direito – Universidade Presbiteriana Mackenzie"],
     areas: ["Previdenciário", "Civil", "Consumidor", "Família e Sucessões"],
+    foto: evianeFoto,
   },
-  { nome: "Dr. Willians", oab: null, cargo: "Trabalhista • Empresarial", formacao: [], areas: ["Trabalhista", "Empresarial"] },
-  { nome: "Dra. Giovanna", oab: null, cargo: "Imobiliário • Civil", formacao: [], areas: ["Imobiliário", "Civil"] },
-  { nome: "Gabriel (Estagiário)", oab: null, cargo: "Pesquisa • Apoio jurídico", formacao: [], areas: ["Pesquisa", "Apoio"] },
+  { nome: "Dr. Willians", oab: null, cargo: "Trabalhista • Empresarial", formacao: [], areas: ["Trabalhista", "Empresarial"], foto: williansFoto },
+  { nome: "Dra. Giovanna", oab: null, cargo: "Imobiliário • Civil", formacao: [], areas: ["Imobiliário", "Civil"], foto: giovannaFoto },
+  { nome: "Gabriel (Estagiário)", oab: null, cargo: "Pesquisa • Apoio jurídico", formacao: [], areas: ["Pesquisa", "Apoio"], foto: gabrielFoto },
 ];
 
 const LINKS = {
@@ -552,7 +561,7 @@ function TeamCarousel({ people }) {
   );
 }
 
-function PersonCard({ nome, cargo, oab, formacao = [], areas = [] }) {
+function PersonCard({ nome, cargo, oab, formacao = [], areas = [], foto }) {
   const initials = nome
     .split(" ")
     .filter(Boolean)
@@ -563,16 +572,25 @@ function PersonCard({ nome, cargo, oab, formacao = [], areas = [] }) {
   return (
     <CardGradient className="p-6 h-full">
       <div className="flex items-start gap-4">
-        <div className="relative">
-          <div className="grid h-16 w-16 shrink-0 place-content-center rounded-full bg-white text-neutral-900 font-bold">
-            {initials}
-          </div>
+        <div className="relative flex-shrink-0 w-16 h-16">
+          {foto ? (
+            <img
+              src={foto}
+              alt={nome}
+              className="h-16 w-16 rounded-full object-cover border-2 border-amber-300/60 bg-white"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
+          ) : (
+            <div className="grid h-16 w-16 place-content-center rounded-full bg-white text-neutral-900 font-bold">
+              {initials}
+            </div>
+          )}
           <div className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-amber-300/60" />
         </div>
-        <div className="min-w-0">
-          <div className="font-semibold tracking-tight">{nome}</div>
-          {cargo && <div className="text-xs text-white/60">{cargo}</div>}
-          {oab && <div className="mt-1 text-xs text-white/60">{oab}</div>}
+        <div className="min-w-0 max-w-full">
+          <div className="font-semibold tracking-tight break-words">{nome}</div>
+          {cargo && <div className="text-xs text-white/60 break-words">{cargo}</div>}
+          {oab && <div className="mt-1 text-xs text-white/60 break-words">{oab}</div>}
           {formacao.length > 0 && (
             <ul className="mt-2 list-disc pl-4 text-xs text-white/70 space-y-1">
               {formacao.map((f, i) => (
