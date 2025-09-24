@@ -191,6 +191,20 @@ export default function HomepageMarinhoMendes() {
   const [tab, setTab] = useState("cnpj");
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Scroll para o topo ou para a seção correta ao montar
+  useEffect(() => {
+    if (window.location.hash) {
+      const el = document.getElementById(window.location.hash.replace('#', ''));
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
+
   return (
     <div className={`min-h-screen text-white bg-gradient-to-b ${THEME.brand.bg} relative overflow-hidden`}> 
       {/* Efeitos de fundo: aurora + grade sutil */}

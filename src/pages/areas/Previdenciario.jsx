@@ -548,18 +548,18 @@ export default function AreaPrevidenciarioPage() {
                 <div className="mt-5">
                   <div className="text-xs text-white/60 mb-1">Atalhos</div>
                   <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                    <a
-                      href={LINKS.home}
+                    <Link
+                      to="/"
                       className="inline-flex items-center gap-1 opacity-90 hover:opacity-100 hover:underline underline-offset-4"
                     >
                       <Home className="h-4 w-4" /> Página principal
-                    </a>
-                    <a
-                      href={`${LINKS.home}#areas`}
+                    </Link>
+                    <Link
+                      to="/#areas"
                       className="inline-flex items-center gap-1 opacity-90 hover:opacity-100 hover:underline underline-offset-4"
                     >
                       <Scale className="h-4 w-4" /> Ver todas as áreas
-                    </a>
+                    </Link>
                     <a
                       href={LINKS.blog}
                       className="inline-flex items-center gap-1 opacity-90 hover:opacity-100 hover:underline underline-offset-4"
