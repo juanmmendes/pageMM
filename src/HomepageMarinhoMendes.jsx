@@ -7,6 +7,7 @@ import giovannaFoto from './assets/Giovana.jpeg';
 import gabrielFoto from './assets/Gabriel.jpeg';
 import williansFoto from './assets/Williams.jpg';
 import escritorioUrl from './assets/escritorio.jpg';
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone,
@@ -61,7 +62,8 @@ const AREAS_CNPJ = [
 ];
 
 const AREAS_PF = [
-  { title: "Direito Previdenciário", desc: "Aposentadorias, benefícios e revisões no INSS e RPPS.", icon: Scale, href: "https://marinhomendes.adv.br/direito-previdenciario/" },
+  // Onde define AREAS_PF:
+  { title: "Direito Previdenciário", desc: "Aposentadorias, benefícios e revisões no INSS e RPPS.", icon: Scale, href: "/areas/previdenciario" },
   { title: "Direito Civil", desc: "Contratos, responsabilidade civil e obrigações.", icon: FileText, href: "https://marinhomendes.adv.br/direito-civil/" },
   { title: "Direito do Consumidor", desc: "Práticas abusivas, vícios de produtos e serviços.", icon: Gavel, href: "https://marinhomendes.adv.br/direito-do-consumidor/" },
   { title: "Direito Imobiliário", desc: "Compra e venda, locação, garantias e usucapião.", icon: Home, href: "https://marinhomendes.adv.br/direito-imobiliario/" },
@@ -80,7 +82,8 @@ const EQUIPE = [
       "Pós-graduação em Direito do Trabalho e Previdenciário – ESAMC",
     ],
     areas: ["Societário", "Empresarial", "Trabalhista", "Administrativo"],
-    foto: danielFoto,
+  foto: danielFoto,
+  linkedin: "https://www.linkedin.com/in/marinhomendesadv/",
   },
   {
     nome: "Dr. Sergio Rodrigo Costa",
@@ -92,7 +95,8 @@ const EQUIPE = [
       "Pós-graduando em Direito Tributário – IBET",
     ],
     areas: ["Tributário", "Empresarial", "Civil", "Trabalhista"],
-    foto: sergioFoto,
+  foto: sergioFoto,
+  linkedin: "https://www.linkedin.com/in/sergio-r-costa-1a567751/",
   },
   {
     nome: "Dra. Eviane de Oliveira Silva",
@@ -100,7 +104,8 @@ const EQUIPE = [
     cargo: "Previdenciário • Civil • Consumidor",
     formacao: ["Graduada em Direito – Universidade Presbiteriana Mackenzie"],
     areas: ["Previdenciário", "Civil", "Consumidor", "Família e Sucessões"],
-    foto: evianeFoto,
+  foto: evianeFoto,
+  linkedin: "https://www.linkedin.com/in/eviane-oliveira-9175a920b/",
   },
   {
     nome: "Dr. Williams da Silva",
@@ -108,7 +113,7 @@ const EQUIPE = [
     cargo: "Civil • Direito do Trabalho • Contratos",
     formacao: ["Graduado em Direito - Universidade Adventista de São Paulo"],
     areas: ["Civil", "Trabalho", "Contratos"],
-    foto: williansFoto
+  foto: williansFoto
   },
   {
   nome: "Dra. Giovana Marques",
@@ -116,7 +121,8 @@ const EQUIPE = [
     cargo: "Civil • Família • Previdenciário",
     formacao: ["Graduada em Direito - Universidade Adventista de São Paulo"],
     areas: ["Civil", "Família", "Previdenciário"],
-    foto: giovannaFoto
+  foto: giovannaFoto,
+  linkedin: "https://www.linkedin.com/in/giiovana-marques/"
   },
   {
     nome: "Gabriel (Estagiário)",
@@ -124,7 +130,8 @@ const EQUIPE = [
     cargo: "Gestão Processual • Pesquisa Jurídica",
     formacao: ["Cursando Direito no Centro Universitário Adventista de São Paulo"],
     areas: ["Gestão Processual", "Suporte Técnico-Jurídico", "Pesquisa Jurídica", "Acompanhamento Processual"],
-    foto: gabrielFoto
+  foto: gabrielFoto,
+  linkedin: "https://www.linkedin.com/in/gabriel-ferreira-moreno-a7a688361/"
   },
 ];
 
@@ -470,6 +477,12 @@ function ContactItem({ Icon, label, value, href }) {
 }
 
 function AreaCard({ title, desc, icon: Icon, href }) {
+  const isInternal = href && href.startsWith("/");
+  const Wrapper = isInternal ? Link : "a";
+  const wrapperProps = isInternal
+    ? { to: href }
+    : { href, target: "_blank", rel: "noreferrer" };
+
   return (
     <div className="group relative h-full">
       <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
@@ -485,15 +498,13 @@ function AreaCard({ title, desc, icon: Icon, href }) {
             </div>
             {href && (
               <div className="mt-4">
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
+                <Wrapper
+                  {...wrapperProps}
                   className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold hover:bg-white/20"
                   aria-label={`Saiba mais sobre ${title}`}
                 >
                   Saiba mais
-                </a>
+                </Wrapper>
               </div>
             )}
           </div>
@@ -568,7 +579,15 @@ function TeamCarousel({ people }) {
       >
         {people.map((p, i) => (
           <div key={i} className="snap-center shrink-0 basis-[88%] sm:basis-[46%] lg:basis-[31%]">
-            <PersonCard {...p} />
+            <PersonCard
+              nome={p.nome}
+              cargo={p.cargo}
+              oab={p.oab}
+              formacao={p.formacao}
+              areas={p.areas}
+              foto={p.foto}
+              linkedin={p.linkedin}
+            />
           </div>
         ))}
       </div>
@@ -582,7 +601,7 @@ function TeamCarousel({ people }) {
   );
 }
 
-function PersonCard({ nome, cargo, oab, formacao = [], areas = [], foto }) {
+function PersonCard({ nome, cargo, oab, formacao = [], areas = [], foto, linkedin }) {
   const initials = nome
     .split(" ")
     .filter(Boolean)
@@ -624,6 +643,20 @@ function PersonCard({ nome, cargo, oab, formacao = [], areas = [], foto }) {
               {areas.map((a, i) => (
                 <span key={i} className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-white/70">{a}</span>
               ))}
+            </div>
+          )}
+          {/* LinkedIn pessoal - botão mais destacado */}
+          {typeof linkedin === 'string' && linkedin.length > 0 && (
+            <div className="mt-3">
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-3 py-1 border border-sky-500 rounded-full text-xs text-sky-600 font-semibold hover:bg-sky-50 hover:border-sky-600 hover:text-sky-800 transition-colors"
+                aria-label="LinkedIn pessoal"
+              >
+                LinkedIn
+              </a>
             </div>
           )}
         </div>
