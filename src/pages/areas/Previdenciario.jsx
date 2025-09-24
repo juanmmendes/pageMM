@@ -82,28 +82,45 @@ export default function AreaPrevidenciarioPage() {
 
       {/* Header compacto com breadcrumb */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3">
-          <nav className="flex items-center gap-3 text-sm text-white/80">
-            <Link
-              to={LINKS.home}
-              className="inline-flex items-center gap-2 hover:text-white"
-            >
-              <Home className="h-4 w-4" /> Página principal
-            </Link>
-            <span className="opacity-40">/</span>
-            <span className="text-white/60">Áreas</span>
-            <span className="opacity-40">/</span>
-            <strong className="text-white">Direito Previdenciário</strong>
-          </nav>
+  <div className="mx-auto w-full max-w-7xl px-4 py-3">
+    {/* 2 linhas no mobile, 2 colunas no sm+ */}
+    <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 items-center">
+      {/* Breadcrumb: nunca estoura; trunca o título */}
+      <nav className="min-w-0 flex items-center gap-2 text-xs sm:text-sm text-white/80 overflow-hidden">
+        <Link to={LINKS.home} className="inline-flex items-center gap-1.5 sm:gap-2 hover:text-white shrink-0">
+          <Home className="h-4 w-4" />
+          <span className="hidden sm:inline">Página principal</span>
+        </Link>
+        <span className="opacity-40 hidden sm:inline">/</span>
+        <span className="text-white/60 hidden sm:inline">Áreas</span>
+        <span className="opacity-40 hidden sm:inline">/</span>
+        <strong className="text-white truncate">Direito Previdenciário</strong>
+      </nav>
 
-          <a
-            href={LINKS.whatsapp}
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-300 px-4 py-2 text-xs font-semibold text-neutral-900 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-emerald-300"
-          >
-            <MessageCircle className="h-4 w-4" /> Fale agora
-          </a>
-        </div>
-      </header>
+      {/* CTA: compacto no mobile (100% largura), completo no sm+ */}
+      <div className="flex sm:justify-end">
+        {/* Mobile */}
+        <a
+          href={LINKS.whatsapp}
+          className="inline-flex sm:hidden w-full justify-center items-center gap-1.5 rounded-full border border-emerald-300/40 bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-emerald-300/40"
+          aria-label="Falar agora pelo WhatsApp"
+        >
+          <MessageCircle className="h-4 w-4" />
+          <span>WhatsApp</span>
+        </a>
+        {/* Desktop / sm+ */}
+        <a
+          href={LINKS.whatsapp}
+          className="hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-300 px-4 py-2 text-xs font-semibold text-neutral-900 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+        >
+          <MessageCircle className="h-4 w-4" />
+          Fale agora
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
 
       <main>
         {/* HERO */}
