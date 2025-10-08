@@ -733,7 +733,7 @@ function AuroraBackground() {
   const orbs = [
     { x: -220, y: -120, size: 560, hue: "rgba(14,165,233,0.25)" },
     { x: 140, y: 20, size: 460, hue: "rgba(99,102,241,0.22)" },
-    { x: -10, y: 200, size: 420, hue: "rgba(228,185,60,0.18)" },
+    { x: -10, y: 200, size: 420, hue: "rgba(228,185,60,0.17)" },
   ];
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
