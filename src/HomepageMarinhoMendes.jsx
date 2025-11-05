@@ -496,7 +496,7 @@ function ContactItem({ Icon, label, value, href }) {
       <IconCircle Icon={Icon} />
       <div className="min-w-0">
         <div className="text-xs text-white/60">{label}</div>
-        <div className="text-xs sm:text-sm font-medium break-words whitespace-normal leading-tight group-hover:underline">{value}</div>
+        <div className="text-xs font-medium break-words whitespace-normal leading-tight group-hover:underline sm:text-[13px] sm:whitespace-nowrap sm:tracking-tight">{value}</div>
       </div>
     </a>
   );
