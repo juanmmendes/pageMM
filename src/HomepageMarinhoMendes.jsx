@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+﻿import React, { useRef, useState, useEffect } from "react";
 import logoUrl from './assets/LogoBranca.png';
 import danielFoto from './assets/Daniel.jpeg';
 import sergioFoto from './assets/Rodrigo.png';
@@ -462,9 +462,21 @@ export default function HomepageMarinhoMendes() {
             </div>
           </div>
           <div className="mt-8 border-t border-white/10 pt-6 text-xs text-white/50">
-            © {new Date().getFullYear()} Marinho Mendes Sociedade de Advogados. Todos os direitos reservados.
-          </div>
-        </div>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                {"\u00A9 "}{new Date().getFullYear()} Marinho Mendes Sociedade de Advogados. Todos os direitos reservados.
+              </div>
+              <div className="flex flex-wrap items-center gap-3 text-white/60">
+                <Link to="/politica-de-privacidade" className="hover:text-white">
+                  Pol&iacute;tica de Privacidade
+                </Link>
+                <span className="hidden sm:inline opacity-30" aria-hidden="true">|</span>
+                <Link to="/termos-de-uso" className="hover:text-white">
+                  Termos de Uso
+                </Link>
+              </div>
+            </div>
+          </div>        </div>
       </footer>
 
       {/* Ajustes globais para esconder scrollbar do carrossel no WebKit */}
@@ -484,7 +496,7 @@ function ContactItem({ Icon, label, value, href }) {
       <IconCircle Icon={Icon} />
       <div className="min-w-0">
         <div className="text-xs text-white/60">{label}</div>
-        <div className="text-sm font-medium break-words whitespace-normal group-hover:underline">{value}</div>
+        <div className="text-xs sm:text-sm font-medium break-words whitespace-normal leading-tight group-hover:underline">{value}</div>
       </div>
     </a>
   );

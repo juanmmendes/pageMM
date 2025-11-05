@@ -3,6 +3,8 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import HomepageMarinhoMendes from "./HomepageMarinhoMendes.jsx";
 import AreaPrevidenciarioPage from "./pages/areas/Previdenciario.jsx";
+import PoliticaPrivacidadePage from "./pages/PoliticaPrivacidade.jsx";
+import TermosUsoPage from "./pages/TermosUso.jsx";
 
 function NotFound() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomepageMarinhoMendes />} />
       <Route path="/areas/previdenciario" element={<AreaPrevidenciarioPage />} />
+      <Route path="/politica-de-privacidade" element={<PoliticaPrivacidadePage />} />
+      <Route path="/termos-de-uso" element={<TermosUsoPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
