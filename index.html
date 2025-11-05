@@ -10,6 +10,24 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="manifest" href="/site.webmanifest">
+  <script>
+    (function () {
+      var l = window.location;
+      if (l.search && l.search.startsWith('?/')) {
+        var basePath = l.pathname.endsWith('/') ? l.pathname : l.pathname + '/';
+        var segments = l.search
+          .slice(2)
+          .split('&')
+          .map(function (s) {
+            return s.replace(/~and~/g, '&');
+          });
+        var path = segments.shift() || '';
+        var query = segments.length ? '?' + segments.join('&') : '';
+        var newUrl = basePath + path + query + l.hash;
+        window.history.replaceState(null, null, newUrl);
+      }
+    })();
+  </script>
   </head>
   <body>
     <div id="root"></div>

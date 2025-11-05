@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecionando&hellip;</title>
+    <meta name="robots" content="noindex">
+    <script>
+      (function () {
+        var pathSegmentsToKeep = 1; // keep the repo name when hosted on GitHub Pages project sites
+        var l = window.location;
+        var baseUrl =
+          l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') +
+          '/?/';
+        var redirectUrl =
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash;
+        l.replace(baseUrl + redirectUrl);
+      })();
+    </script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #0b1020;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .message {
+        max-width: 420px;
+        text-align: center;
+        line-height: 1.5;
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">
+      <p>Redirecionando para o aplicativo&hellip;</p>
+      <p>Se nada acontecer, volte para a p&aacute;gina inicial.</p>
+    </div>
+  </body>
+</html>
