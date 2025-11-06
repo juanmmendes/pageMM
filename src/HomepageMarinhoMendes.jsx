@@ -497,12 +497,18 @@ export default function HomepageMarinhoMendes() {
 // SUBCOMPONENTES
 // ==========================
 function ContactItem({ Icon, label, value, href }) {
+  const isEmail = typeof value === "string" && value.includes("@");
+  const valueClassName = [
+    "font-medium leading-tight group-hover:underline sm:text-[13px] sm:tracking-tight sm:whitespace-nowrap",
+    isEmail ? "text-[11px] tracking-tight whitespace-nowrap" : "text-xs break-words whitespace-normal",
+  ].join(" ");
+
   return (
     <a href={href} className="group w-full flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 hover:translate-y-[-2px] transition">
       <IconCircle Icon={Icon} />
       <div className="min-w-0">
         <div className="text-xs text-white/60">{label}</div>
-        <div className="text-xs font-medium break-words whitespace-normal leading-tight group-hover:underline sm:text-[13px] sm:whitespace-nowrap sm:tracking-tight">{value}</div>
+        <div className={valueClassName}>{value}</div>
       </div>
     </a>
   );
