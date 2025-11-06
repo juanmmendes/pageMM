@@ -224,24 +224,24 @@ const SECTIONS = [
         <ul className="list-none space-y-2 text-white/70">
           <li className="flex items-center gap-2">
             <Mail className="h-4 w-4 text-white/60" />
-            <a href={`mailto:${CONTACT.email}`} className="underline hover:text-white">
+            <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center rounded-full px-2.5 py-1 text-white/80 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white">
               {CONTACT.email}
             </a>
           </li>
           <li className="flex items-center gap-2">
             <Phone className="h-4 w-4 text-white/60" />
-            <a href={CONTACT.phoneHref} className="underline hover:text-white">
+            <a href={CONTACT.phoneHref} className="inline-flex items-center rounded-full px-2.5 py-1 text-white/80 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white">
               {CONTACT.phoneDisplay}
             </a>
             (Campinas) | WhatsApp institucional:{" "}
-            <a href={CONTACT.whatsappHref} className="underline hover:text-white">
+            <a href={CONTACT.whatsappHref} className="inline-flex items-center rounded-full px-2.5 py-1 text-white/80 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white">
               {CONTACT.whatsappDisplay}
             </a>
           </li>
         </ul>
         <p>
           Você também pode consultar os{" "}
-          <Link to="/termos-de-uso" className="text-amber-300 hover:text-amber-200 underline">
+          <Link to="/termos-de-uso" className="inline-flex items-center rounded-full px-2.5 py-1 text-amber-300 no-underline transition-colors duration-200 hover:bg-amber-300/10 hover:text-amber-100">
             Termos de Uso
           </Link>{" "}
           para compreender as condições gerais de acesso e uso de nossas plataformas.

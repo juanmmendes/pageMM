@@ -467,11 +467,17 @@ export default function HomepageMarinhoMendes() {
                 {"\u00A9 "}{new Date().getFullYear()} Marinho Mendes Sociedade de Advogados. Todos os direitos reservados.
               </div>
               <div className="flex flex-wrap items-center gap-3 text-white/60">
-                <Link to="/politica-de-privacidade" className="hover:text-white">
+                <Link
+                  to="/politica-de-privacidade"
+                  className="inline-flex items-center rounded-full px-3 py-1 text-white/70 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white"
+                >
                   Pol&iacute;tica de Privacidade
                 </Link>
                 <span className="hidden sm:inline opacity-30" aria-hidden="true">|</span>
-                <Link to="/termos-de-uso" className="hover:text-white">
+                <Link
+                  to="/termos-de-uso"
+                  className="inline-flex items-center rounded-full px-3 py-1 text-white/70 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white"
+                >
                   Termos de Uso
                 </Link>
               </div>
