@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Shield, Home, Mail, Phone } from "lucide-react";
+import { Shield, Home, Mail, Phone, MessageCircle } from "lucide-react";
 
 const THEME = {
   brand: {
@@ -16,6 +16,8 @@ const CONTACT = {
   phoneHref: "tel:+551932090417",
   whatsappDisplay: "(19) 97410-0605",
   whatsappHref: "https://api.whatsapp.com/send/?phone=5519974100605&text&type=phone_number&app_absent=0",
+  whatsappFastDisplay: "(19) 97401-2329",
+  whatsappFastHref: "https://api.whatsapp.com/send/?phone=5519974012329&text&type=phone_number&app_absent=0",
 };
 
 const LAST_UPDATE = "26 de setembro de 2025";
@@ -221,22 +223,65 @@ const SECTIONS = [
           Para exercer direitos, esclarecer dúvidas ou solicitar informações adicionais sobre o tratamento de dados pessoais, entre em contato com o
           nosso encarregado de proteção de dados (DPO) pelos canais:
         </p>
-        <ul className="list-none space-y-2 text-white/70">
-          <li className="flex items-center gap-2">
-            <Mail className="h-4 w-4 text-white/60" />
-            <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center rounded-full px-2.5 py-1 text-white/80 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white">
-              {CONTACT.email}
-            </a>
+        <ul className="mt-5 grid gap-3 text-white/80 sm:grid-cols-2">
+          <li className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-white/10 text-white/60">
+              <Mail className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              <div className="text-xs uppercase tracking-[0.2em] text-white/50">E-mail</div>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="block text-sm font-medium text-white/90 no-underline transition-colors duration-200 hover:text-white hover:underline break-words"
+              >
+                {CONTACT.email}
+              </a>
+            </div>
           </li>
-          <li className="flex items-center gap-2">
-            <Phone className="h-4 w-4 text-white/60" />
-            <a href={CONTACT.phoneHref} className="inline-flex items-center rounded-full px-2.5 py-1 text-white/80 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white">
-              {CONTACT.phoneDisplay}
-            </a>
-            (Campinas) | WhatsApp institucional:{" "}
-            <a href={CONTACT.whatsappHref} className="inline-flex items-center rounded-full px-2.5 py-1 text-white/80 no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white">
-              {CONTACT.whatsappDisplay}
-            </a>
+          <li className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-white/10 text-white/60">
+              <Phone className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              <div className="text-xs uppercase tracking-[0.2em] text-white/50">Telefone comercial</div>
+              <a
+                href={CONTACT.phoneHref}
+                className="block text-sm font-medium text-white/90 no-underline transition-colors duration-200 hover:text-white hover:underline"
+              >
+                {CONTACT.phoneDisplay}
+              </a>
+              <div className="text-xs text-white/50">Campinas e região</div>
+            </div>
+          </li>
+          <li className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-white/10 text-white/60">
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              <div className="text-xs uppercase tracking-[0.2em] text-white/50">WhatsApp institucional</div>
+              <a
+                href={CONTACT.whatsappHref}
+                className="block text-sm font-medium text-white/90 no-underline transition-colors duration-200 hover:text-white hover:underline"
+              >
+                {CONTACT.whatsappDisplay}
+              </a>
+              <div className="text-xs text-white/50">Atendimento rápido</div>
+            </div>
+          </li>
+          <li className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-white/10 text-white/60">
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              <div className="text-xs uppercase tracking-[0.2em] text-white/50">WhatsApp plantão</div>
+              <a
+                href={CONTACT.whatsappFastHref}
+                className="block text-sm font-medium text-white/90 no-underline transition-colors duration-200 hover:text-white hover:underline"
+              >
+                {CONTACT.whatsappFastDisplay}
+              </a>
+              <div className="text-xs text-white/50">Atendimento emergencial</div>
+            </div>
           </li>
         </ul>
         <p>
